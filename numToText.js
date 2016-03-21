@@ -6,6 +6,62 @@ Ex: numToText("I have 5 dogs and 6 ponies"); // returns "I have five dogs and si
 
 */
 
-var numToText = function(str) {
+var numToText = function(str, i , words ) {
+
+  
+
+  var numberToString = function(myStr){
+    switch (myStr){
+    case '0': 
+      return 'zero';
+      break;
+    case '1': 
+      return 'one';
+      break;
+    case '2': 
+      return 'two';
+      break;
+    case '3': 
+      return 'three';
+      break;
+    case '4': 
+      return 'four';
+      break;
+    case '5': 
+      return 'five';
+      break;
+    case '6': 
+      return 'six';
+      break;
+    case '7': 
+      return 'seven';
+      break;
+    case '8': 
+      return 'eight';
+      break;
+    case '9': 
+      return 'nine';
+      break;
+    default:  
+      return myStr;
+      break;
+    }
+  }
+  i = i || 0;
+  //initialization
+  if (i === 0){
+    words = str.split(' ');
+  }
+  
+  if (i < words.length ){
+  //recursive case
+    words[i] = numberToString(words[i]);
+    i++;
+    return numToText(str, i, words);
+    
+  } else {
+  //base case 
+    return words.join(' ');
+  }
 
 };
